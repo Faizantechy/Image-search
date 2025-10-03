@@ -11,8 +11,8 @@ function Gallery() {
 
   console.log(searchInput);
   return (
-    <div className="w-full  space-y-5 h-full px-4 py-10 flex flex-col  gap-10 justify-center items-center">
-      <h1 className="lg:text-5xl text-4xl font-bold mt-10">
+    <div className="w-full h-full px-4 py-10 flex flex-col  gap-10 justify-center items-center">
+      <h1 className="lg:text-5xl text-4xl font-bold mt-7">
         {toggle ? "PickyShots" : "VideShots"}
       </h1>
 
@@ -43,7 +43,7 @@ function Gallery() {
           Videos
         </button>
       </div>
-      <div className="input-box mt-10 flex overflow-hidden">
+      <div className="input-box mt-7 flex overflow-hidden">
         <input
           type="text"
           className="lg:w-[480px] px-3 py-2 lg:px-5  lg:text-lg lg:py-4 rounded-md text-black bg-gray-200"
