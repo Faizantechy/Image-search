@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Images from "./Images";
+import Videos from "./Videos";
 
 function Gallery() {
   const [searchInput, setsearchInput] = useState("");
@@ -11,28 +12,34 @@ function Gallery() {
   console.log(searchInput);
   return (
     <div className="w-full h-full px-4 py-10 flex flex-col  gap-10 justify-center items-center">
-      <h1 className="text-5xl font-bold mt-10">PickyShots</h1>
+      <h1 className="text-5xl font-bold mt-10">
+        {toggle ? "PickyShots" : "VideShots"}
+      </h1>
 
-      <div
-        className="toggle"
-        onClick={(e) => {
-          if (e.target.value === "Images") {
-            e.target.style.backgroundColor = "black";
-            e.target.style.color = "white";
-          } else {
-            e.target.style.backgroundColor = "white";
-            e.target.style.color = "black";
-          }
-        }}
-      >
+      <div className="toggle">
         <button
-          className={
-            " font-bold cursor-pointer bg-black border-2 border-black text-white px-4 py-4 rounded-lg"
-          }
+          className={`font-bold cursor-pointer ${
+            toggle
+              ? "bg-black border-2 text-white"
+              : "bg-white border-2 text-black"
+          } px-4 py-4 rounded-lg`}
+          onClick={() => {
+            settoggle((prev) => !prev);
+          }}
         >
           Images
         </button>
-        <button className=" font-bold px-4 py-4 rounded-lg border-2 cursor-pointer border-black">
+
+        <button
+          className={`font-bold cursor-pointer ${
+            !toggle
+              ? "bg-black border-2 text-white"
+              : "bg-white border-2 text-black"
+          } px-4 py-4 rounded-lg`}
+          onClick={() => {
+            settoggle((prev) => !prev);
+          }}
+        >
           Videos
         </button>
       </div>
@@ -40,7 +47,7 @@ function Gallery() {
         <input
           type="text"
           className="w-[480px] px-5  text-lg py-4 rounded-md text-black bg-gray-200"
-          placeholder="Search"
+          placeholder={`${toggle ? "Search images" : "Search videos"}`}
           value={searchInput}
           onChange={(e) => {
             setsearchInput(e.target.value);
@@ -62,7 +69,9 @@ function Gallery() {
           className=" bg-black text-white cursor-pointer active:scale-90 rounded-md text-lg px-5 py-1"
           onClick={() => {
             setNewInput("Mountain");
-            setcategoryTitle("Mountain Images");
+            setcategoryTitle(
+              `${toggle ? "Mountain images" : "Mountain Videos"}`
+            );
           }}
         >
           Mountain
@@ -71,7 +80,7 @@ function Gallery() {
           className=" bg-black text-white cursor-pointer active:scale-90 rounded-md text-lg px-5 py-1"
           onClick={() => {
             setNewInput("Beaches");
-            setcategoryTitle("Beaches Images");
+            setcategoryTitle(`${toggle ? "Beaches images" : "Beaches Videos"}`);
           }}
         >
           Beaches
@@ -80,7 +89,7 @@ function Gallery() {
           className=" bg-black text-white cursor-pointer active:scale-90 rounded-md text-lg px-5 py-1"
           onClick={() => {
             setNewInput("Birds");
-            setcategoryTitle("Birds Images");
+            setcategoryTitle(`${toggle ? "Birds images" : "Birds Videos"}`);
           }}
         >
           Birds
@@ -89,14 +98,18 @@ function Gallery() {
           className=" bg-black text-white cursor-pointer active:scale-90 rounded-md text-lg px-5 py-1"
           onClick={() => {
             setNewInput("Flowers");
-            setcategoryTitle("Flowers Images");
+            setcategoryTitle(`${toggle ? "Flowers images" : "Flowers Videos"}`);
           }}
         >
           Flowers
         </button>
       </div>
 
-      <Images newInput={newInput} categoryTitle={categoryTitle} />
+      {toggle ? (
+        <Images newInput={newInput} categoryTitle={categoryTitle} />
+      ) : (
+        <Videos newInput={newInput} categoryTitle={categoryTitle} />
+      )}
     </div>
   );
 }
