@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import searchAPI, { SearchVideos } from "../API/ApiFunction";
+import Loader from "./Loader";
+
 
 function Videos({ newInput, categoryTitle }) {
   console.log(newInput, "from the images");
@@ -12,11 +14,19 @@ function Videos({ newInput, categoryTitle }) {
       const receivedData = await SearchVideos(newInput || imagesArray[rn]);
       if (receivedData) {
         console.log(receivedData.videos, "These are the videos I'm getting!");
-        setData([...receivedData.videos]);
+
+        setTimeout(() => {
+                    setData([...receivedData.videos]);
+
+        }, 2500);
       }
     };
     getData();
   }, [newInput]);
+
+  if(data.length===0){
+    return <Loader/>
+  }
   return (
     <div className="mt-10">
       <h2 className="text-4xl font-semibold text-center">{categoryTitle}</h2>

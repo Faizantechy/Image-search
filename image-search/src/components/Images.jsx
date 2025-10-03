@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import searchAPI from "../API/ApiFunction";
+import Loader from "./Loader";
+
 
 function Images({ newInput, categoryTitle }) {
   console.log(newInput, "from the images");
@@ -16,6 +18,9 @@ function Images({ newInput, categoryTitle }) {
     };
     getData();
   }, [newInput]);
+    if(data.length===0){
+    return <Loader/>
+  }
   return (
     <div className="mt-10">
       <h2 className="text-4xl font-semibold text-center">{categoryTitle}</h2>
