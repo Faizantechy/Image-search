@@ -22,7 +22,7 @@ function Images({ newInput, categoryTitle }) {
     return <Loader/>
   }
   return (
-    <div className="mt-10">
+    <div className="mt-7">
       <h2 className="lg:text-4xl text-3xl font-semibold text-center">{categoryTitle}</h2>
 
       <div className="images mt-[5em] flex lg:gap-12 gap-5 flex-wrap justify-center">
