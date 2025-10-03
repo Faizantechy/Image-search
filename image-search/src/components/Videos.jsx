@@ -29,9 +29,9 @@ function Videos({ newInput, categoryTitle }) {
   }
   return (
     <div className="mt-10">
-      <h2 className="text-4xl font-semibold text-center">{categoryTitle}</h2>
+      <h2 className="lg:text-4xl text-3xl font-semibold text-center">{categoryTitle}</h2>
 
-      <div className="images mt-[5em] flex gap-12 flex-wrap justify-center">
+      <div className="images mt-[5em] flex lg:gap-12 gap-5 flex-wrap justify-center">
         {data &&
           data.map((video) => {
             console.log(video,"This is the video");

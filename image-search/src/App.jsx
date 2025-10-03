@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import searchAPI, { SearchVideos } from "./API/ApiFunction";
+
 import Gallery from "./components/Gallery";
 
 

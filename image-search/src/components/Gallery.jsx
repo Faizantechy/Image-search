@@ -11,8 +11,8 @@ function Gallery() {
 
   console.log(searchInput);
   return (
-    <div className="w-full h-full px-4 py-10 flex flex-col  gap-10 justify-center items-center">
-      <h1 className="text-5xl font-bold mt-10">
+    <div className="w-full  space-y-5 h-full px-4 py-10 flex flex-col  gap-10 justify-center items-center">
+      <h1 className="lg:text-5xl text-4xl font-bold mt-10">
         {toggle ? "PickyShots" : "VideShots"}
       </h1>
 
@@ -22,7 +22,7 @@ function Gallery() {
             toggle
               ? "bg-black border-2 text-white"
               : "bg-white border-2 text-black"
-          } px-4 py-4 rounded-lg`}
+          } lg:px-4 lg:py-4 px-2 py-2 rounded-lg`}
           onClick={() => {
             settoggle((prev) => !prev);
           }}
@@ -35,7 +35,7 @@ function Gallery() {
             !toggle
               ? "bg-black border-2 text-white"
               : "bg-white border-2 text-black"
-          } px-4 py-4 rounded-lg`}
+          } lg:px-4 lg:py-4 px-2 py-2 rounded-lg`}
           onClick={() => {
             settoggle((prev) => !prev);
           }}
@@ -46,7 +46,7 @@ function Gallery() {
       <div className="input-box mt-10 flex overflow-hidden">
         <input
           type="text"
-          className="w-[480px] px-5  text-lg py-4 rounded-md text-black bg-gray-200"
+          className="lg:w-[480px] px-3 py-2 lg:px-5  lg:text-lg lg:py-4 rounded-md text-black bg-gray-200"
           placeholder={`${toggle ? "Search images" : "Search videos"}`}
           value={searchInput}
           onChange={(e) => {
@@ -64,7 +64,7 @@ function Gallery() {
         </button>
       </div>
 
-      <div className="categories flex gap-8">
+      <div className="categories flex gap-8 flex-wrap lg:justify-end justify-center">
         <button
           className=" bg-black text-white cursor-pointer active:scale-90 rounded-md text-lg px-5 py-1"
           onClick={() => {
